@@ -1,6 +1,6 @@
 const writeAll = (pegMap) => {
   let s = JSON.stringify(pegMap);
-  // write output 
+  
   console.log(s);
   pegHist.push(JSON.parse(s));
 };
@@ -13,7 +13,7 @@ const pegMap = {
 const pegArray = ["A", "B", "C"];
 const updateMapAndPlot = (pegMap, from, to) => {
   try {
-    let theDisk = pegMap[from].pop(); // this actually moves the disk
+    let theDisk = pegMap[from].pop(); 
     pegMap[to].push(theDisk);
     writeAll(pegMap);
   } catch (e) {
@@ -21,8 +21,7 @@ const updateMapAndPlot = (pegMap, from, to) => {
   }
 };
 
-// Pegs  A   B   C
-// disks are labeled 0 to N
+
 var moves = 0;
 const moveDisks = function (n, from, to, spare) {
   if (n == 1) {
@@ -36,7 +35,7 @@ const moveDisks = function (n, from, to, spare) {
   }
 };
 const nDisks = 6
-// given from and to figure out the other peg
+
 const missing = (from, to) => {
   const all = {
     A: 1,
@@ -44,14 +43,14 @@ const missing = (from, to) => {
     C: 3
   };
   let total = all[from] + all[to];
-  let miss = 6 - total; // 0 based so not 6 but one less
-  let keys = Object.keys(all); // array of keys
+  let miss = 6 - total; 
+  let keys = Object.keys(all); 
   return keys[miss];
 };
 
 const initialize = (nDisks, pegMap) => {
   for (let i = nDisks; i >= 1; i--) {
-    pegMap["A"].push(i); // this stacks disks with smallest on top
+    pegMap["A"].push(i); 
   }
   writeAll(pegMap);
 };
